@@ -21,5 +21,9 @@ namespace TestProject2.Pages
         {
             checkBox1.Click();
         }
+        public static void ClosePage()
+        {
+            Driver.GetDriver().Dispose();
+        }
     }
 }

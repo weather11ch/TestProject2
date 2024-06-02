@@ -18,5 +18,11 @@ namespace TestProject2
             CheckBoxesPage.ClickCheckBox();
             Assert.Pass();
         }
+        [TearDown]
+        public void TearDown()
+        {
+
+            CheckBoxesPage.ClosePage();
+        }
     }
 }
