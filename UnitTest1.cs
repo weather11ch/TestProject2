@@ -18,24 +18,48 @@ namespace TestProject2
         }
 
         [Test]
-        public void Test1()
-        {
-
-            //Thread.Sleep(5000);
-            // public static WebDriverWait GetWait() => _wait ??=  new (_driver, TimeSpan.FromSeconds(20));
-            // _wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//input[@placeholder='First Name']"))).SendKeys("FirstName");
+        public void CheckOneClickButton()
+        {            
             CheckBoxesPage.OpenPage();
-            
-              //Thread.Sleep(50000);
-
             CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_5);
-            //Thread.Sleep(5000);
             IWebElement inputArea = Driver.GetDriver().FindElement(By.XPath("//*[@class =\"dcg-mq-digit\"]"));
             
             string inputText = inputArea.Text;
             Assert.AreEqual(inputText, "5");
            // Thread.Sleep(5000);
-           
+         }
+        
+        [Test]
+        public void CheckSumInput()
+        {
+            CheckBoxesPage.OpenPage();
+
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_5);
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_plus);
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_2);
+            
+            IWebElement inputArea = Driver.GetDriver().FindElement(By.XPath("//*[@class=\"dcg-mq-container\"]"));
+            
+            string inputText = inputArea.Text;
+            Assert.AreEqual(inputText, "5+2");
+            // Thread.Sleep(5000);
+
+        }
+        [Test]
+        public void CheckSumResult()
+        {
+            CheckBoxesPage.OpenPage();
+
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_5);
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_plus);
+            CheckBoxesPage.ClickCheckBox(CheckBoxesPage.button_2);
+            
+            IWebElement resultArea = Driver.GetDriver().FindElement(By.XPath("//*[@class=\"dcg-exp-output-container\"]"));
+
+            string resultText = resultArea.Text;
+            Assert.AreEqual(resultText, "=7");
+            // Thread.Sleep(5000);
+
         }
         [TearDown]
         public void TearDown()

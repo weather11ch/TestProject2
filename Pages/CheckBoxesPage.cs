@@ -12,8 +12,8 @@ namespace TestProject2.Pages
 {
     internal static class CheckBoxesPage
     {
-        private static IWebDriver driver;
-        private static WebDriverWait wait;
+        private static IWebDriver driver = Driver.GetDriver();
+        private static WebDriverWait wait = Driver.WaitDriver(driver, 30);
         public static void OpenPage()
         {
             Driver.GetDriver().Navigate().GoToUrl("https://www.desmos.com/scientific?lang=ru");
@@ -23,13 +23,11 @@ namespace TestProject2.Pages
 
         }
 
-        public static IWebElement button_5 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"5\"]"));
-
-
-        
+        public static IWebElement button_5 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@aria-label=\"5\"]")));
+        //public static IWebElement button_5 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"5\"]"));                    
 
         //public static IWebElement button_1 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"1\"]"));
-        //public static IWebElement button_2 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"2\"]"));
+        public static IWebElement button_2 = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@aria-label=\"2\"]")));
         //public static IWebElement button_3 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"3\"]"));
         //public static IWebElement button_4 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"4\"]"));
         //public static IWebElement button_8 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"8\"]"));
@@ -37,7 +35,8 @@ namespace TestProject2.Pages
         //public static IWebElement button_7 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"7\"]"));
         //public static IWebElement button_9 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"9\"]"));
         //public static IWebElement button_0 = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"0\"]"));
-        //public static IWebElement button_plus = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"Плюс\"]"));
+        public static IWebElement button_plus = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@aria-label=\"Плюс\"]")));
+        //Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"Плюс\"]"));
         //public static IWebElement button_enter = Driver.GetDriver().FindElement(By.XPath("//*[@aria-label=\"ВВод\"]"));
 
 
